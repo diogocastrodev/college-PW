@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Titulo</h1>
+    <h2>Objetivos</h2>
+    <ul>
+        <li>A</li>
+        <li>B</li>
+        <li>C</li>
+    </ul>
+    <h2 id="horario-title">
+        Horário
+    </h2>
+    <table id="a">
+        <caption>Titulo</caption>
+        <thead>
+            <th>Hora</th>
+            <th>Ação</th>
+        </thead>
+    </table>
+    <h3>Foto</h3>
+    <img src="../1/images/starry.jpeg" alt="" width="400" height="200" />
+    <h3>Resumo</h3>
+    <p class="large center ">Blah blah blah</p>
+    <p class="large center">Blah blah blah</p>
+    <p class="large center">Blah blah blah</p>
+    <h3>Música da minha vida</h3>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/d7lbzUUXj0k?si=vjVOS4hth8tK21cd"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+    <!--
+            Yippy
+        -->
+    <a href="https://songsterr.com/">Página da Minha Vida</a>
+
+
+
+    <script>
+        for (let i = 0; i < 100; i++) {
+            document.getElementById("a").appendChild(document.createElement("tr"));
+            document.getElementById("a").lastChild.appendChild(document.createElement("td"));
+            document.getElementById("a").lastChild.lastChild.appendChild(document.createTextNode(`${i + 1}/${i + 1}/${i + 1}`));
+            document.getElementById("a").lastChild.appendChild(document.createElement("td"));
+            document.getElementById("a").lastChild.lastChild.appendChild(document.createTextNode(`Ação ${i + 1}`));
+        }
+    </script>
+</body>
+
+</html>

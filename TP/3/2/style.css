@@ -1,0 +1,74 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  /*background-color: rgb(230, 230, 230); */
+  /*background-image: url("../1/images/starry.jpeg");*/
+  background-position: top right;
+  background-repeat: no-repeat;
+}
+
+/*
+p {
+    color: red;
+    text-align: center;
+}
+*/
+
+p.center {
+  text-align: center;
+}
+
+h2 {
+  color: blue;
+}
+
+#horario-title {
+  color: green;
+  text-align: center;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.center {
+  text-align: center;
+}
+
+p.large {
+  font-size: 300%;
+}
+
+.large {
+  font-size: 300%;
+}
+
+td {
+  opacity: 50%;
+}
+
+table {
+  caption-side: left;
+  font: 14px "Comic Sans MS";
+}
+
+caption {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+tr {
+  color: blue;
+}
+
+th {
+  font-style: italic;
+  text-decoration: underline;
+}
+
+td {
+  background-color: yellow;
+  text-align: right;
+}
