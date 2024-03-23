@@ -5,11 +5,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="./tailwind.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    </link>
+    <!--<script src="./session.js"></script> -->
 </head>
 
 <body>
-    <script src="./script.js">
-        checkSession();
+    <div class="min-h-screen flex justify-center">
+        <main class="relative container mt-4">
+            <div class="absolute top-0 right-0">
+                <div class="flex flex-row gap-2 items-center">
+                    <div class="ring-1 ring-gray-600 px-2 py-1 shadow-xl hover:bg-gray-50 cursor-pointer">
+                        <a href="/PW/PL/LAB2/profile.html" class="flex flex-row items-center">
+                            Gerir perfil
+                        </a>
+                    </div>
+                    <div class="ring-1 ring-gray-600 px-2 py-1 shadow-xl hover:bg-gray-50 cursor-pointer">
+                        <a href="/PW/PL/LAB2/logout.html" class="flex flex-row items-center">
+                            Terminar sessão
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-row gap-3">
+                <img src="./static/logo.jpeg" alt="" width="192" height="192" />
+                <span class="self-center text-4xl">Olá ...... 👋 </span>
+            </div>
+            <div class="flex flex-row items-center my-4">
+                <span class="text-2xl">
+                    As minhas tarefas:
+                </span>
+                <button type="button" class="ml-auto border-1 border-gray-600 px-3 py-1 shadow-xl"
+                    data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="addTodoModal();">+ Nova
+                    tarefa</button>
+            </div>
+            <table class="w-full table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Tarefa</th>
+                        <th>Data</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody id="tarefas-body">
+                    <!--
+                    <tr>
+                        <td>Comprar pão</td>
+                        <td>2024-10-10</td>
+                        <td>
+                            <input type="checkbox" name="tarefa1" id="tarefa1">
+                        </td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </main>
+        <footer class="absolute bottom-0 left-0 w-full">
+            <div class="ring-1 ring-gray-800">Copyright 2024 - All rights reserved by ...</div>
+        </footer>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body" id="modal-body">
+                    <!--
+                    <div class="text-3xl mb-3">Nova Tarefa</div>
+                    <form id="form-tarefa" name="form-tarefa" class="flex flex-col gap-3" onsubmit="event.preventDefault(); addTodo({
+                        description: document.getElementById('input-descricao').value,
+                        date: document.getElementById('input-data').value
+                    });">
+                        <div>
+                            <label for="input-descricao" class="form-label">Descrição</label>
+                            <input type="text" class="form-control" id="input-descricao" name="input-descricao" required
+                                minlength="1">
+                        </div>
+                        <div>
+                            <label for="input-data" class="form-label">Data</label>
+                            <input type="date" class="form-control" id="input-data" name="input-data" required>
+                        </div>
+                        <button type="submit"
+                            class="w-full border-2 py-2 border-green-500 hover:bg-green-500 text-black hover:text-white shadow-lg"
+                            onsubmit="(event) => {
+                        event.preventDefault();
+                            }">Gravar</button>
+                    </form>
+                    -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    <script src="./script.js"></script>
+    <script>
+        initialTodos();
     </script>
 </body>
 

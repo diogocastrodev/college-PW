@@ -3,3 +3,21 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+table,
+th,
+td {
+  border: 2px solid #0d0d0d;
+  border-collapse: collapse;
+  /*padding: 8px 3px;*/
+}
+
+th + th,
+td + td {
+  text-align: center;
+}
+
+th {
+  background-color: #0d0d0d;
+  color: white;
+}
