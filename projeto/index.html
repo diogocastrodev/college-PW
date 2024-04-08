@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PW - Projeto</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body class="bg-gray-100">
+    <!-- ROOT -->
+    <div class="min-h-screen flex flex-col relative" id="root">
+        <!-- BANNER -->
+        <div class="bg-gradient-to-r from-green-300 to-emerald-600 w-full h-12 flex items-center justify-center"
+            id="banner">
+            <!-- RESPONSIVE -->
+            <div class="container text-gray-800 px-2 flex flex-row">
+                <!-- LEFT SIDE TEXT -->
+                <span class="capitalize">o site mais confiado pelos portugueses 🇵🇹</span>
+                <!-- RIGHT SIDE -->
+                <div class="ml-auto flex items-center justify-center">
+                    <!-- CLOSE BUTTON -->
+                    <button class="cursor-pointer" onclick="closeBanner(event);">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- MAIN PAGE -->
+        <main class="flex flex-col flex-1 relative gap-3">
+            <!-- SEARCH BAR -->
+            <div class="w-full bg-gray-200 h-36 flex flex-row justify-center items-center">
+                <div class="container">
+                    <form method="get" class="flex flex-row gap-0 mx-32">
+                        <!-- SEARCH -->
+                        <input type="text" class="outline-none h-12 bg-gray-50 rounded-l-xl grow px-2"
+                            placeholder="O que deseja procurar?" />
+                        <!-- REGION SEARCH -->
+                        <input type="text"
+                            class="outline-none h-12 bg-gray-50 border-l-2 border-gray-400 flex-none px-2"
+                            placeholder="Região" />
+                        <!-- SEARCH BUTTON -->
+                        <button type="submit"
+                            class="flex flex-row items-center justify-center bg-gradient-to-br from-violet-400 to-indigo-400 text-gray-200 hover:from-violet-300 hover:to-indigo-300 hover:text-gray-800 rounded-r-xl flex-none px-2 gap-1">
+                            PESQUISAR
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-4 h-4">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                            </svg>
+
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <!-- CATEGORIES -->
+            <div class="w-full flex justify-center">
+                <div class="container flex flex-col gap-8">
+                    <!-- TITLE -->
+                    <div class="text-3xl capitalize self-center">Categorias Principais</div>
+                    <!-- CATEGORIAS -->
+                    <div class="w-full flex flex-wrap gap-24 flex-row place-content-evenly justify-items-start"
+                        id="categories">
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="./tailwind.js"></script>
+    <script src="./bootstrap.bundle.min.js"></script>
+    <script type="module">
+        import { loadNavBar, loadFooter } from './modules.js';
+        loadNavBar();
+        loadFooter();
+    </script>
+    <script type="text/javascript">
+        function closeBanner(event) {
+            document.getElementById('banner').style.display = 'none';
+        }
+
+        function categories(amt, {
+            category = 'Lazer',
+            redirect = '#',
+            image = 'https://via.placeholder.com/150',
+        } = {
+            }) {
+            const categories = document.getElementById('categories');
+            for (let i = 0; i < amt; i++) {
+                categories.innerHTML += `
+                <div class="flex flex-col gap-2 items-center">
+                    <a href="${redirect}">
+                        <div class="bg-gray-600 rounded-full h-24 w-24">
+                            <img src="${image}" class="h-full w-full object-cover rounded-full" />
+                        </div>
+                    </a>
+                    <a href="${redirect}">${category}</a>
+                </div>
+                `;
+            }
+        }
+
+        categories(12)
+    </script>
+
+</body>
+
+</html>
