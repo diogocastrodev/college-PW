@@ -17,7 +17,7 @@
             <!-- RESPONSIVE -->
             <div class="container text-gray-800 px-2 flex flex-row">
                 <!-- LEFT SIDE TEXT -->
-                <span class="capitalize">o site mais confiado pelos portugueses 🇵🇹</span>
+                <span class="capitalize">o site menos confiado pelos portugueses 🇵🇹</span>
                 <!-- RIGHT SIDE -->
                 <div class="ml-auto flex items-center justify-center">
                     <!-- CLOSE BUTTON -->
@@ -35,18 +35,19 @@
             <!-- SEARCH BAR -->
             <div class="w-full bg-gray-200 h-36 flex flex-row justify-center items-center">
                 <div class="container">
-                    <form method="get" class="flex flex-row gap-0 mx-32">
+                    <form method="get" class="flex flex-row gap-0 mx-4 md:mx-32">
                         <!-- SEARCH -->
                         <input type="text" class="outline-none h-12 bg-gray-50 rounded-l-xl grow px-2"
-                            placeholder="O que deseja procurar?" />
+                            placeholder="O que deseja procurar? 🔎" />
                         <!-- REGION SEARCH -->
                         <input type="text"
                             class="outline-none h-12 bg-gray-50 border-l-2 border-gray-400 flex-none px-2"
-                            placeholder="Região" />
+                            placeholder="Região 🌍" />
                         <!-- SEARCH BUTTON -->
                         <button type="submit"
                             class="flex flex-row items-center justify-center bg-gradient-to-br from-violet-400 to-indigo-400 text-gray-200 hover:from-violet-300 hover:to-indigo-300 hover:text-gray-800 rounded-r-xl flex-none px-2 gap-1">
                             PESQUISAR
+                            <!-- Magnifying Glass Icon -->
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="w-4 h-4">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -58,20 +59,52 @@
                 </div>
             </div>
             <!-- CATEGORIES -->
-            <div class="w-full flex justify-center">
+            <div class="w-full flex justify-center pt-3">
                 <div class="container flex flex-col gap-8">
                     <!-- TITLE -->
                     <div class="text-3xl capitalize self-center">Categorias Principais</div>
                     <!-- CATEGORIAS -->
-                    <div class="w-full flex flex-wrap gap-24 flex-row place-content-evenly justify-items-start"
-                        id="categories">
+                    <div class="w-full flex flex-wrap gap-10 md:gap-24 flex-row place-content-center" id="categories">
+                        <!-- EXAMPLE CATEGORY -->
+                        <!-- <div class="flex flex-col gap-2 items-center">
+                                <a href="#">
+                                    <div class="bg-gray-600 rounded-full h-24 w-24">
+                                        <img src="https://via.placeholder.com/150" class="h-full w-full object-cover rounded-full" />
+                                    </div>
+                                </a>
+                                <a href="#">CATEGORY</a>
+                            </div> -->
                     </div>
                 </div>
             </div>
+            <!-- RECENT POSTS -->
+            <div class="w-full flex justify-center mt-16 pt-8 bg-gray-200">
+                <div class="container flex flex-col gap-8">
+                    <!-- TITLE -->
+                    <div class="text-3xl capitalize self-center">Anúncios Recentes</div>
+                    <!-- POSTS -->
+                    <div class="w-full flex flex-wrap md:gap-24 gap-8 flex-row place-content-center" id="posts">
+                        <!-- EXAMPLE POST -->
+                        <!-- <a href="#" class="w-72 flex flex-col gap-2 items-center bg-gray-50 p-1 rounded-md shadow-lg">
+                                <div class="w-full flex flex-col gap-1">
+                                    <div class="bg-gray-600 h-36 w-full rounded-md">
+                                        <img src="#"
+                                            class="h-full w-full object-cover rounded-full rounded-md aspect-video	" />
+                                    </div>
+                                    <div class="p-1">
+                                        <div class="text-left text-gray-900">Title</div>
+                                        <div class="text-sm text-gray-800 text-left font-semibold">233€</div>
+                                        <div class="text-xs text-gray-700 text-left mt-3">Porto</div>
+                                    </div>
+                                </div>
+                            </a> -->
+                    </div>
+                </div>
         </main>
     </div>
     <script src="./tailwind.js"></script>
     <script src="./bootstrap.bundle.min.js"></script>
+    <script type="module" src="./modules.js"></script>
     <script type="module">
         import { loadNavBar, loadFooter } from './modules.js';
         loadNavBar();
@@ -82,7 +115,7 @@
             document.getElementById('banner').style.display = 'none';
         }
 
-        function categories(amt, {
+        function categories(amt = 12, {
             category = 'Lazer',
             redirect = '#',
             image = 'https://via.placeholder.com/150',
@@ -103,7 +136,36 @@
             }
         }
 
-        categories(12)
+        function posts(amt = 6, {
+            title = 'Lazer',
+            status = 'venda',
+            price = '100€',
+            location = 'Porto',
+            redirect = '#',
+            image = 'https://via.placeholder.com/300',
+        } = {
+            }) {
+            const posts = document.getElementById('posts');
+            for (let i = 0; i < amt; i++) {
+                posts.innerHTML += `
+                <a href="${redirect}" class="w-72 flex flex-col gap-2 items-center bg-gray-50 p-1 rounded-md shadow-lg">
+                    <div class="w-full flex flex-col gap-1">
+                        <div class="bg-gray-600 h-36 w-full rounded-md">
+                            <img src="${image}"
+                                class="h-full w-full object-cover rounded-full rounded-md aspect-video	" />
+                        </div>
+                        <div class="p-1">
+                            <div class="text-left text-gray-900">${title}</div>
+                            <div class="text-sm text-gray-800 text-left font-semibold">${status === "venda" ? price : "Troca"}</div>
+                            <div class="text-xs text-gray-700 text-left mt-3">${location}</div>
+                        </div>
+                    </div>
+                </a>
+                `;
+            }
+        }
+        categories();
+        posts();
     </script>
 
 </body>
