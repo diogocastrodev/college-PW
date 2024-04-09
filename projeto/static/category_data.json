@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "category": "Automóveis",
+    "cover": "https://categories.olxcdn.com/assets/categories/olxpt/carros-motos-e-barcos-362-1x.png"
+  },
+  {
+    "id": 2,
+    "category": "Imóveis",
+    "cover": "https://categories.olxcdn.com/assets/categories/olxpt/imoveis-16-1x.png"
+  },
+  {
+    "id": 3,
+    "category": "Lazer",
+    "cover": "https://categories.olxcdn.com/assets/categories/olxpt/lazer-26-1x.png"
+  },
+  {
+    "id": 4,
+    "category": "Tecnologia",
+    "cover": "https://categories.olxcdn.com/assets/categories/olxpt/tecnologia-e-informatica-11-1x.png"
+  },
+  {
+    "id": 5,
+    "category": "Móveis",
+    "cover": "https://categories.olxcdn.com/assets/categories/olxpt/moveis-casa-e-jardim-13-1x.png"
+  },
+  {
+    "id": 6,
+    "category": "Serviços",
+    "cover": "https://categories.olxcdn.com/assets/categories/olxpt/equipamentos-e-ferramentas-4918-1x.png"
+  },
+  {
+    "id": 7,
+    "category": "Animais",
+    "cover": "https://categories.olxcdn.com/assets/categories/olxpt/animais-10-1x.png"
+  },
+  {
+    "id": 8,
+    "category": "Bebé e Criança",
+    "cover": "https://categories.olxcdn.com/assets/categories/olxpt/bebes-criancas-99-1x.png"
+  },
+  {
+    "id": 9,
+    "category": "Moda",
+    "cover": "https://via.placeholder.com/96"
+  },
+  {
+    "id": 10,
+    "category": "Desporto",
+    "cover": "https://via.placeholder.com/96"
+  },
+  {
+    "id": 11,
+    "category": "Emprego",
+    "cover": "https://categories.olxcdn.com/assets/categories/olxpt/emprego-190-1x.png"
+  },
+  {
+    "id": 12,
+    "category": "Outros",
+    "cover": "https://categories.olxcdn.com/assets/categories/olxpt/compra-venda-185-1x.png"
+  }
+]

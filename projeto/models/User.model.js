@@ -4,7 +4,18 @@ import { generateUUID } from "../utils.js";
  */
 export default class User {
   id;
-  name;
+  username;
+  first_name;
+  last_name;
+  email;
+  password;
+  phone_number;
+  created_at;
+  updated_at;
+  status;
+  hash;
+  admin;
+  avatar;
 
   /**
    * Create a new User
@@ -34,6 +45,10 @@ export default class User {
    * @param {string} name
    */
   set name(name) {
+    if (!name) {
+      throw new Error("Name is required");
+    }
+    console.log(name);
     this.name = name.trim();
   }
 

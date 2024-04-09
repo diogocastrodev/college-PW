@@ -2,18 +2,7 @@ import UserController from "./controllers/User.controller.js";
 import User from "./models/User.model.js";
 
 const userController = new UserController();
-
-const fetchUsers = async () => {
-  setTimeout(async () => {
-    await fetch("./static/user_data.json")
-      .then((res) => res.json())
-      .then((data) => {
-        data.forEach((u) => {
-          userController.addUser(new User(u));
-        });
-      });
-  }, 400);
-};
+userController.loadUsers();
 
 export const loadNavBar = () => {
   fetch("./templates/nav.html")
@@ -30,8 +19,6 @@ export const loadFooter = () => {
       document.getElementById("root").insertAdjacentHTML("beforeend", data);
     });
 };
-
-fetchUsers();
 
 setTimeout(() => {
   console.log(userController.getUsers());
