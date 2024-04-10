@@ -158,9 +158,10 @@
         } = {
             }) {
             const posts = document.getElementById('posts');
+            let id = 0;
             for (let i = 0; i < amt; i++) {
                 posts.innerHTML += `
-                <a href="${redirect}" class="w-72 flex flex-col gap-2 items-center bg-gray-50 p-1 rounded-md shadow-lg">
+                <a href="./post.html?id=${id}" class="w-72 flex flex-col gap-2 items-center bg-gray-50 p-1 rounded-md shadow-lg">
                     <div class="w-full flex flex-col gap-1">
                         <div class="bg-gray-600 h-36 w-full rounded-md">
                             <img src="${image}"

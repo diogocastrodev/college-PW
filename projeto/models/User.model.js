@@ -18,27 +18,50 @@ export default class User {
   avatar;
 
   /**
-   * Create a new User
-   * @param {int} id
-   * @param {String} name
-   * @returns {void} void
+   *
+   * @param {{
+   * id: number,
+   * username: string,
+   * first_name: string,
+   * last_name: string,
+   * email: string,
+   * password: string,
+   * phone_number: string,
+   * created_at: Date,
+   * updated_at: Date,
+   * status: "ACTIVE" | "INACTIVE" | "SUSPENDED" | "WAITING"
+   * hash: string,
+   * admin: boolean,
+   * avatar: string, }} data
    */
-  constructor({ id, name }) {
-    if (!id) {
-      this.id = generateUUID();
-    }
-    this.name = name;
-  }
-
-  get id() {
-    return this.id;
-  }
-
-  /**
-   * @return {string} id
-   */
-  get name() {
-    return this.name;
+  constructor({
+    id = generateUUID(),
+    username,
+    first_name,
+    last_name,
+    email,
+    password,
+    phone_number,
+    created_at = new Date(),
+    updated_at = new Date(),
+    status = "active",
+    hash,
+    admin = false,
+    avatar,
+  }) {
+    this.id = id;
+    this.username = username;
+    this.first_name = first_name;
+    this.last_name = last_name;
+    this.email = email;
+    this.password = password;
+    this.phone_number = phone_number;
+    this.created_at = created_at;
+    this.updated_at = updated_at;
+    this.status = status;
+    this.hash = hash;
+    this.admin = admin;
+    this.avatar = avatar;
   }
 
   /**
@@ -55,7 +78,17 @@ export default class User {
   toJSON() {
     return {
       id: this.id,
-      name: this.name,
+      username: this.username,
+      first_name: this.first_name,
+      last_name: this.last_name,
+      email: this.email,
+      phone_number: this.phone_number,
+      created_at: this.created_at,
+      updated_at: this.updated_at,
+      status: this.status,
+      hash: this.hash,
+      admin: this.admin,
+      avatar: this.avatar,
     };
   }
 }

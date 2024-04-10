@@ -33,7 +33,7 @@ export default class CategoryController {
         await fetch("./static/category_data.json")
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
+            console.log("FETCHING CATEGORIES ", data);
             CategoryController.categories = new Set();
             data.forEach((c) => {
               CategoryController.categories.add(new Category(c));

@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PW - Projeto</title>
     <link rel="stylesheet" href="./style.css">
+    <script src="./js/session.js"></script>
+    <script>
+        requireLogout();
+    </script>
 </head>
 
 <body class="bg-gray-100">
@@ -25,7 +29,8 @@
                         </svg>
                     </a>
                     <!-- Form -->
-                    <form action="#" onsubmit="formSubmit(event)" method="post" class="p-8 flex flex-col gap-6">
+                    <form action="#" id="signin-form" onsubmit="signInForm(event);" method="post"
+                        class="p-8 flex flex-col gap-6">
                         <!-- Username / Email Input -->
                         <div class="flex flex-col gap-2">
                             <label for="us-em">Username / Email <span class="text-red-500">*</span></label>
@@ -55,12 +60,18 @@
     </div>
     <script src="./tailwind.js"></script>
     <script src="./bootstrap.bundle.min.js"></script>
-    <script type="text/javascript">
-        const formSubmit = (event) => {
-            // Prevent default form submission
+    <script type="module">
+        import UserController from './controllers/User.controller.js';
+        const uc = new UserController();
+        uc.loadUsers();
+
+        export const signInForm = (event) => {
             event.preventDefault();
+            console.log(3);
+            // Prevent default form submission
             // Grab the form
             const form = event.target;
+            // const form = document.getElementById("signin-form");
             // Grab in the form data
             const formData = new FormData(form);
             // Convert FormData to Object
@@ -100,10 +111,86 @@
                 // Exit function
                 return;
             }
-            // TODO: Work with the data
+            console.log(4);
+            const isEmail = usernameEmail.includes('@');
+            let userId = null;
+            if (isEmail) {
+                // Email
+                userId = uc.getUserIdByEmail(usernameEmail);
+            } else {
+                // Username
+                userId = uc.getUserIdByUsername(usernameEmail);
+            }
+            if (userId === null) {
+                // User not found
+                // Red border
+                document.getElementById('us-em').classList.add('ring-2', 'ring-red-400');
+                // Focus
+                document.getElementById('us-em').focus();
+                // Remove red border on input change
+                document.getElementById('us-em').addEventListener('input', () => {
+                    document.getElementById('us-em').classList.remove('ring-2', 'ring-red-400');
+                });
+                // Remove red border when input loses focus
+                document.getElementById('us-em').addEventListener('blur', () => {
+                    document.getElementById('us-em').classList.remove('ring-2', 'ring-red-400');
+                });
+                alert("Username / Email ou senha incorretos");
+                // Exit function
+                return;
+            }
+            // Grab the user password
+            const user = uc.getUserById(userId);
+            if (!user) {
+                // User not found
+                // Red border
+                document.getElementById('us-em').classList.add('ring-2', 'ring-red-400');
+                // Focus
+                document.getElementById('us-em').focus();
+                // Remove red border on input change
+                document.getElementById('us-em').addEventListener('input', () => {
+                    document.getElementById('us-em').classList.remove('ring-2', 'ring-red-400');
+                });
+                // Remove red border when input loses focus
+                document.getElementById('us-em').addEventListener('blur', () => {
+                    document.getElementById('us-em').classList.remove('ring-2', 'ring-red-400');
+                });
+                alert("Username / Email ou senha incorretos");
+                // Exit function
+                return;
+            }
+            // Check if the password is correct
+            if (user.password !== password) {
+                // Red border
+                document.getElementById('us-em').classList.add('ring-2', 'ring-red-400');
+                // Focus
+                document.getElementById('us-em').focus();
+                // Remove red border on input change
+                document.getElementById('us-em').addEventListener('input', () => {
+                    document.getElementById('us-em').classList.remove('ring-2', 'ring-red-400');
+                });
+                // Remove red border when input loses focus
+                document.getElementById('us-em').addEventListener('blur', () => {
+                    document.getElementById('us-em').classList.remove('ring-2', 'ring-red-400');
+                });
+                alert("Username / Email ou senha incorretos");
+                // Exit function
+                return;
+            }
+            // Redirect to the dashboard
+            localStorage.setItem('userId', userId);
+            window.location.href = './dashboard.html';
         }
+        window.signInForm = signInForm;
     </script>
 
 </body>
 
 </html>
+
+<!-- 
+    Thoughts for tomorrow:
+    script has to be a module
+    inside the script check if the form is valid
+    if it is, work that data
+ -->

@@ -7,7 +7,12 @@ export default class UserController {
   static isLoaded = false;
 
   constructor() {
-    this.users = [];
+    if (this.users === null || this.users === undefined) {
+      UserController.users = new Set();
+    }
+    if (this.isLoaded === null || this.isLoaded === undefined) {
+      UserController.isLoaded = false;
+    }
     if (!UserController.isLoaded) {
       this.loadUsers();
       UserController.isLoaded = true;
@@ -19,7 +24,7 @@ export default class UserController {
    * @param {User} user
    */
   addUser(user) {
-    this.users.push(user);
+    UserController.users.push(user);
   }
 
   /**
@@ -27,7 +32,7 @@ export default class UserController {
    * @param {int} id
    */
   removeUser(id) {
-    this.users = this.users.filter((u) => u.id !== id);
+    UserController.users = this.users.filter((u) => u.id !== id);
   }
 
   /**
@@ -35,7 +40,7 @@ export default class UserController {
    * @return {User[]} users
    */
   getUsers() {
-    return this.users;
+    return UserController.users;
   }
 
   /**
@@ -44,7 +49,30 @@ export default class UserController {
    * @return {User} user
    */
   getUserById(id) {
-    return this.users.find((u) => u.id === id);
+    return UserController.users.values().find((u) => u.id === id);
+  }
+
+  /**
+   * @param {string} email
+   * @returns {int} id
+   */
+  getUserIdByEmail(email) {
+    return UserController.users
+      .values()
+      .find((u) => u.email.trim().toLowerCase() === email.trim().toLowerCase())
+      .id;
+  }
+
+  /**
+   * @param {string} username
+   * @returns {int} id
+   */
+  getUserIdByUsername(username) {
+    return UserController.users
+      .values()
+      .find(
+        (u) => u.username.trim().toLowerCase() === username.trim().toLowerCase()
+      ).id;
   }
 
   loadUsers() {
@@ -53,14 +81,14 @@ export default class UserController {
         await fetch("./static/user_data.json")
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
-
-            // data.forEach((u) => {
-            //   this.addUser(new User(u));
-            // });
+            console.log("FETCHING USERS ", data);
+            UserController.users = new Set();
+            data.forEach((u) => {
+              UserController.users.add(new User(u));
+            });
+            UserController.isLoaded = true;
             resolve(this.getUsers());
           });
-        this.isLoaded = true;
       }, 400);
     });
   }
